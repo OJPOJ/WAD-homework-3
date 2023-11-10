@@ -9,7 +9,7 @@
             <p class="bodytext">{{text}}</p>
         </div>
         <div class="postfooter">
-            <img class="footerimage" scr="/src/assets/likeutton.png">
+            <img class="footerimage" scr="/src/assets/likeutton.png" v-on:click="LikePost" >
             <p class="likes">{{"Likes: "+ numberOfLikes}} </p> 
         </div>
     </div>
@@ -17,12 +17,25 @@
 <script>
 export default {
     name: "post",
+    methods: {
+        LikePost: function(){
+            this.$store.commit('authenticate', {
+                postId: this.postId
+            });
+        }
+    },
     props: {
-        postId:String,
+        postId:Number,
         date: String,
         uri:String,
         text:String,
         numberOfLikes:Number
+    },
+    data:{
+
+    },
+    computed:{
+
     }
 }
 </script>
