@@ -1,17 +1,31 @@
+
 <template>
+  <div id="headerName">
+  <header-comp></header-comp>
+</div>
 <nav>
   <router-link to="/">Home</router-link> |
   <router-link to="/signup">Signup</router-link>
 </nav>
 <router-view />
+
+
 </template>
 
 <style>
   @import './header-general-styles.css';
 </style>
 
-<script>
 
+<script>
+import headerComp from './components/headerComp.vue';
+
+export default{
+  name: "app",
+  components: {
+    headerComp,
+  }
+}
 </script>
 
 <style>
@@ -21,6 +35,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
