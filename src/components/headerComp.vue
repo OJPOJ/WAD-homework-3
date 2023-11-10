@@ -1,10 +1,9 @@
 <template>
     <div class="headerClass">
-    <div class="links">
-        <p><a href="index.html">Home</a></p>
-        <p> | </p>
-        <p><a href="addPost.html"> addPost</a></p>
-    </div>
+      <nav>
+  <router-link to="/">Home</router-link> |
+  <router-link to="/signup">Signup</router-link>
+</nav>
 
 
 <div class="dropdown">
