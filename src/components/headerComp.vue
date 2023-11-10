@@ -7,7 +7,7 @@
 
 
 <div class="dropdown">
-    <img src="res/images/me.png" v-on:click="myFunction()" class="dropbtn" alt="LA">
+    <img src="@/assets/me.png" v-on:click="myFunction()" class="dropbtn" alt="LA">
     <div id="myDropdown" class="dropdown-content">
       <a href="">John Doe</a>
       <a href="">john.doe@ut.ee</a>
