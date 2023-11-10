@@ -5,11 +5,11 @@
             <p class="headerdate">{{date}}</p>
         </div>
         <div class="postbody">
-            <img class="bodyimage" src="{{uri}}" v-show="uri!=''">
+            <img class="bodyimage" :src=uri v-show="uri!=''">
             <p class="bodytext">{{text}}</p>
         </div>
         <div class="postfooter">
-            <img class="footerimage" scr="@/assets/likebutton.png" v-on:click="LikePost" >
+            <img class="footerimage" src="@/assets/likebutton.png" v-on:click="LikePost" >
             <p class="likes">{{numberOfLikes + " likes"}} </p> 
         </div>
     </div>

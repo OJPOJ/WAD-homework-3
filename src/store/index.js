@@ -82,6 +82,11 @@ export default createStore ({
     mutations:{
         likePost(state,{postId}){
             state.postList[postId-1].likeCount+=1
+        },
+        resetAllLikes(state){
+            state.postList.forEach(post => {
+                post.likeCount=0
+            });
         }
     },
     actions:{

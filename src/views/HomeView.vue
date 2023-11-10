@@ -27,13 +27,18 @@
       ></post-compo>
     </div>
 
+
     <div class="block">
     </div>
 
+    
+
   </div>
   </div>
 
-
+  <button @click="resetAllLikes" class="reset-likes">
+      <p>Reset likes for all posts</p>
+    </button>
 </template>
 <script>
 import postCompo from '@/components/postCompo.vue'
@@ -42,6 +47,11 @@ export default ({
   name: "homeView",
   components: {
     postCompo
+  },
+  methods: {
+    resetAllLikes: function() {
+      this.$store.commit('resetAllLikes');
+    }
   }
 })
 </script>
