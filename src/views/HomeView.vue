@@ -14,6 +14,9 @@
         :numberOfLikes="post.likeCount"
       ></post-compo>
     </div>
+    <button @click="resetAllLikes" class="reset-likes">
+      <p>Reset likes for all posts</p>
+    </button>
   </div>
 </template>
 <script>
@@ -23,6 +26,11 @@ export default ({
   name: "homeView",
   components: {
     postCompo
+  },
+  methods: {
+    resetAllLikes: function() {
+      this.$store.commit('resetAllLikes');
+    }
   }
 })
 </script>
