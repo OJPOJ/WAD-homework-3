@@ -9,8 +9,8 @@
 <div class="dropdown">
     <img src="@/assets/me.png" v-on:click="myFunction()" class="dropbtn" alt="LA">
     <div id="myDropdown" class="dropdown-content">
-      <a href="">John Doe</a>
-      <a href="">john.doe@ut.ee</a>
+      <router-link to="/">John Doe</router-link> 
+      <router-link to="/">john.doe@ut.ee</router-link> 
       <router-link to="/signup">Sign up</router-link>
     </div>
   </div> 
