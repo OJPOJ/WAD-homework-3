@@ -99,6 +99,16 @@ a:hover{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	
 }
+post-compo{
+	margin-top: 2vw;
+	max-width: 50vw;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	background-color:#96bfe6;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
+}
 body{
 	background-color: #b5d1cc;
 }

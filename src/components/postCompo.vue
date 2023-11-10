@@ -1,7 +1,7 @@
 <template>
     <div class="post">
         <div class="posthead">
-            <img class="headerimage" src="/src/assets/me.png">
+            <img class="headerimage" src="@/assets/me.png">
             <p class="headerdate">{{date}}</p>
         </div>
         <div class="postbody">
@@ -9,17 +9,17 @@
             <p class="bodytext">{{text}}</p>
         </div>
         <div class="postfooter">
-            <img class="footerimage" scr="/src/assets/likeutton.png" v-on:click="LikePost" >
-            <p class="likes">{{"Likes: "+ numberOfLikes}} </p> 
+            <img class="footerimage" scr="@/assets/likebutton.png" v-on:click="LikePost" >
+            <p class="likes">{{numberOfLikes + " likes"}} </p> 
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: "post",
+    name: "postCompo",
     methods: {
         LikePost: function(){
-            this.$store.commit('authenticate', {
+            this.$store.commit('likePost', {
                 postId: this.postId
             });
         }
@@ -31,7 +31,7 @@ export default {
         text:String,
         numberOfLikes:Number
     },
-    data:{
+    data: function (){
 
     },
     computed:{
