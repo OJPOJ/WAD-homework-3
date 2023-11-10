@@ -6,6 +6,7 @@
 <router-view />
 
 
+  <footer-comp></footer-comp>
 </template>
 
 <style>
@@ -14,12 +15,15 @@
 
 
 <script>
+import footerComp from './components/footerComp.vue';
 import headerComp from './components/headerComp.vue';
+
 
 export default{
   name: "app",
   components: {
     headerComp,
+    footerComp,
   }
 }
 </script>
