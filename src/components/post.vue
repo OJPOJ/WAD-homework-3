@@ -1,7 +1,7 @@
 <template>
     <div class="post">
         <div class="posthead">
-            <img class="headerimage" src="">
+            <img class="headerimage" src="/src/assets/me.png">
             <p class="headerdate">{{date}}</p>
         </div>
         <div class="postbody">
@@ -9,8 +9,8 @@
             <p class="bodytext">{{text}}</p>
         </div>
         <div class="postfooter">
-            <img class="footerimage" scr="">
-            <p class="likes"> </p> 
+            <img class="footerimage" scr="/src/assets/likeutton.png">
+            <p class="likes">{{"Likes: "+ numberOfLikes}} </p> 
         </div>
     </div>
 </template>
@@ -21,7 +21,8 @@ export default {
         postId:String,
         date: String,
         uri:String,
-        text:String
+        text:String,
+        numberOfLikes:Number
     }
 }
 </script>
