@@ -18,6 +18,7 @@
 export default {
     name: "post",
     props: {
+        postId:String,
         date: String,
         uri:String,
         text:String
