@@ -11,7 +11,7 @@
     <div id="myDropdown" class="dropdown-content">
       <a href="">John Doe</a>
       <a href="">john.doe@ut.ee</a>
-      <a href="login.html">Logout</a>
+      <router-link to="/signup">Sign up</router-link>
     </div>
   </div> 
 

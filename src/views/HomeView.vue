@@ -11,12 +11,6 @@
 
     <div id="posts">
     </div>
-
-
-
-
-
-
     <div class="postList">
       <post-compo v-for="post in this.$store.state.postList" :key ="post.postId"
         :postId="post.postId"
