@@ -6,6 +6,10 @@
 <router-view />
 </template>
 
+<style>
+  @import './header-general-styles.css';
+</style>
+
 <script>
 
 </script>
