@@ -3,8 +3,20 @@
 
 
   <div class="home">
-    <h1>Home</h1>
-    <p>Home page content goes here.</p>
+
+    <div class="pagebody">
+
+  <div class="block">
+  </div>
+
+    <div id="posts">
+    </div>
+
+
+
+
+
+
     <div class="postList">
       <post-compo v-for="post in this.$store.state.postList" :key ="post.postId"
         :postId="post.postId"
@@ -14,7 +26,14 @@
         :numberOfLikes="post.likeCount"
       ></post-compo>
     </div>
+
+    <div class="block">
+    </div>
+
   </div>
+  </div>
+
+
 </template>
 <script>
 import postCompo from '@/components/postCompo.vue'
