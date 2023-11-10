@@ -10,6 +10,7 @@
         </div>
         <div class="postfooter">
             <img class="footerimage" scr="">
+            <p class="likes"> </p> 
         </div>
     </div>
 </template>
