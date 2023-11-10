@@ -9,11 +9,11 @@
     </div>
     
         <div id="foolinks">
-            <a href="">Legal Stuff</a>
+            <a href="" style="pointer-events: none">Legal Stuff</a>
             <p>|</p>  
-            <a href="">Privacy Policy</a>
+            <a href="" style="pointer-events: none">Privacy Policy</a>
             <p>|</p>
-            <a href="">Security</a>
+            <a href="" style="pointer-events: none">Security</a>
         </div>
         
 </div>
