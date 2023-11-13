@@ -10,7 +10,7 @@
   </div>
 
     <div class="postList">
-      <post-compo v-for="post in this.$store.state.postList" :key ="post.postId"
+      <post-compo v-for="post in postList" :key ="post.postId"
         :postId="post.postId"
         :date="post.date"
         :uri="post.pictureURI"
@@ -43,6 +43,11 @@ export default ({
   methods: {
     resetAllLikes: function() {
       this.$store.commit('resetAllLikes');
+    }
+  },
+  computed:{
+    postList(){
+      return this.$store.state.postList
     }
   }
 })
