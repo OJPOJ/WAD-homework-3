@@ -42,7 +42,7 @@ export default ({
   },
   methods: {
     resetAllLikes: function() {
-      this.$store.commit('resetAllLikes');
+      this.$store.dispatch('resetAllLikesAct');
     }
   },
   computed:{

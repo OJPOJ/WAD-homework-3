@@ -19,7 +19,7 @@ export default {
     name: "postCompo",
     methods: {
         LikePost: function(){
-            this.$store.commit('likePost', {
+            this.$store.dispatch('likePostAct', {
                 postId: this.postId
             });
         }

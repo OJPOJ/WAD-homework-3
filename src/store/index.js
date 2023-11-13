@@ -90,6 +90,13 @@ export default createStore ({
         }
     },
     actions:{
-
+      likePostAct: function(act,{postId}){
+        act.commit('likePost', {
+            postId: postId
+        });
+      },
+      resetAllLikesAct: act => {
+        act.commit("resetAllLikes")
+      }
     }
 })
