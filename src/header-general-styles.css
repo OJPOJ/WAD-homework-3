@@ -91,6 +91,9 @@ a:hover{
 	border-radius: 50%;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.headerClass h1{
+	padding-left: 1vw;
+}
 .post{
 	margin-top: 2vw;
 	max-width: 50vw;
