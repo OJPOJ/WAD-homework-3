@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import SignupView from "../views/SignupView.vue";
+import LoginView  from "../views/LoginView.vue";
 import auth from "../auth";
 
 const routes = [{
@@ -10,15 +10,15 @@ const routes = [{
     beforeEnter: async(to, from, next) => {
         let authResult = await auth.authenticated();
         if (!authResult) {
-            next('/signup')
+            next('/login')
         } else {
             next();
         }
     }
 }, {
-    path: '/signup',
-    name: 'Signup',
-    component: SignupView
+    path: '/login',
+    name: 'login',
+    component: LoginView
 }]
 
 const router = createRouter({

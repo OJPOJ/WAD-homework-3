@@ -1,22 +1,24 @@
 <template>
   <div>
     <form @submit.prevent="validateRegistration">
-      <h2>Create an account</h2>
+      <h2>Login</h2>
       <label for="email">Email</label>
       <input type="email" required v-model="email" placeholder="Email" />
       <label for="password">Password</label>
       <input type="password" required v-model="password" placeholder="Password" />
       <div v-if="validatePassword" class="error">{{ validatePassword }}</div>
       <div class="submit">
-        <button>Sign up</button>
+        <button @click="LogIn">Login</button>
+        <button @click='this.$router.push("/signup")'>Signup</button>
       </div>
+      
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: "RegisterView",
+  name: "loginView",
 
   data() {
     return {
@@ -54,25 +56,9 @@ export default {
     validateRegistration() {
       console.log("signup is submitted");
       this.validatePassword = "";
-
-      if (this.password.length < 8 || this.password.length > 15) {
-        this.validatePassword = "Password must be between 8-15 characters.";
-      } else if (!/^[A-Z]/.test(this.password)) {
-        this.validatePassword = "Password must start with an uppercase letter.";
-      } else if ((this.password.match(/[a-z]/g) || []).length < 2) {
-        this.validatePassword =
-            "Password must contain at least 2 lowercase letters.";
-      } else if (!/\d+/.test(this.password)) {
-        this.validatePassword = "Password must contain at least 1 digit.";
-      } else if (!/[A-Z]/.test(this.password)) {
-        this.validatePassword =
-            "Password must contain at least 1 uppercase letter.";
-      } else if (!/_/.test(this.password)) {
-        this.validatePassword = "Password must contain at least 1 underscore.";
-      } else {
-        console.log("Password is valid");
-        this.$router.push("/");
-      }
+      console.log("Password is valid");
+      this.$router.push("/");
+      
     },
   },
 };
