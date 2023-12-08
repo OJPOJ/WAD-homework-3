@@ -72,7 +72,7 @@ export default createStore ({
                 "date": "23.10.2023",
                 "pictureURI": "",
                 "text": "He learned the important lesson that a picnic at the beach on a windy day is a bad idea.",
-                "likeCount": 0
+                "likeCount": 10
               }
         ]
     },
@@ -85,7 +85,7 @@ export default createStore ({
         },
         resetAllLikes(state){
             state.postList.forEach(post => {
-                post.likeCount=0
+                post.likeCount=0 //state.postList[post.postId].likeCount
             });
         }
     },
