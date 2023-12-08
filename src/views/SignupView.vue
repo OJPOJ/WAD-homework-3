@@ -1,0 +1,113 @@
+<template>
+  <div>
+    <form @submit.prevent="validateRegistration">
+      <h2>Sign up</h2>
+      <label for="email">Email</label>
+      <input type="email" required v-model="email" placeholder="Email" />
+      <label for="password">Password</label>
+      <input type="password" required v-model="password" placeholder="Password" />
+      <div v-if="validatePassword" class="error">{{ validatePassword }}</div>
+      <div class="submit">
+        <button @click='this.$router.push("/login")'>Back</button>
+        <button @click="validateRegistration()">Signup</button>
+      </div>
+      
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "loginView",
+
+  data() {
+    return {
+      email: "",
+      password: "",
+      validatePassword: "",
+    };
+  },
+  methods: {
+    LogIn() {
+      var data = {
+        email: this.email,
+        password: this.password
+      };
+      // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+      fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+          credentials: 'include', //  Don't forget to specify this if you need cookies
+          body: JSON.stringify(data),
+      })
+      .then((response) => response.json())
+      .then((data) => {
+      console.log(data);
+      //this.$router.push("/");
+      location.assign("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error");
+      });
+    },
+    validateRegistration() {
+      console.log("signup is submitted");
+      this.validatePassword = "";
+      console.log("Password is valid");
+      this.$router.push("/");
+      
+    },
+  },
+};
+</script>
+
+<style scoped>
+form {
+  max-width: 320px;
+  margin: 30px auto;
+  background: #eadfc8;
+  text-align: left;
+  padding: 40px;
+  border-radius: 10px;
+}
+input {
+  margin-top: 5px;
+  border: none;
+  margin-bottom: 5px;
+  display:inline-block;
+  vertical-align:middle;
+  margin-left:20px;
+  padding: 10px 6px;
+  border-radius: 10px;
+}
+label {
+  display: inline-block;
+  float: left;
+  padding-top: 10px;
+  text-align: right;
+  width: 80px;
+  margin-right: 20px;
+}
+h2,
+.submit {
+  text-align: center;
+}
+
+button {
+  background: #6b84e5;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: #ffffff;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.error {
+  color: #ff0000;
+  margin-top: 10px;
+}
+</style>
