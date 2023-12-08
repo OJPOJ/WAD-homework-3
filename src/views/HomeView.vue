@@ -15,7 +15,6 @@
         :date="post.date"
         :uri="post.pictureURI"
         :text="post.text"
-        :numberOfLikes="post.likeCount"
       ></post-compo>
     </div>
 
@@ -27,22 +26,44 @@
 
   </div>
   </div>
-
-  <button @click="resetAllLikes" class="reset-likes">
-      <p>Reset likes for all posts</p>
-    </button>
 </template>
 <script>
 import postCompo from '@/components/postCompo.vue'
+import auth from "../auth";
 
 export default ({
   name: "homeView",
   components: {
     postCompo
+  },data: function() {
+    return {
+    posts:[ ],
+    authResult: auth.authenticated()
+    }
   },
   methods: {
-    resetAllLikes: function() {
-      this.$store.dispatch('resetAllLikesAct');
+    Logout() {
+      fetch("http://localhost:3000/auth/logout", {
+          credentials: 'include', //  Don't forget to specify this if you need cookies
+      })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        console.log('jwt removed');
+        //console.log('jwt removed:' + auth.authenticated());
+        this.$router.push("/login");
+        //location.assign("/");
+      })
+      .catch((e) => {
+        console.log(e);
+        console.log("error logout");
+      });
+    },
+    mounted() {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+        .then((response) => response.json())
+        .then(data => this.posts = data)
+        .catch(err => console.log(err.message))
     }
   },
   computed:{
