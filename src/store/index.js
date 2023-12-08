@@ -2,7 +2,7 @@ import {createStore} from 'vuex'
 
 export default createStore ({
     strict:true,
-    state:{
+    state:{/*
         postList:[
             {
                 "postId": 1,
@@ -72,14 +72,14 @@ export default createStore ({
                 "date": "23.10.2023",
                 "pictureURI": "",
                 "text": "He learned the important lesson that a picnic at the beach on a windy day is a bad idea.",
-                "likeCount": 10
+                "likeCount": 0
               }
         ]
-    },
+      */},
     getters:{
 
     },
-    mutations:{
+    mutations:{/*
         likePost(state,{postId}){
             state.postList[postId-1].likeCount+=1
         },
@@ -88,8 +88,8 @@ export default createStore ({
                 post.likeCount=0 //state.postList[post.postId].likeCount
             });
         }
-    },
-    actions:{
+      */},
+    actions:{/*
       likePostAct: function(act,{postId}){
         act.commit('likePost', {
             postId: postId
@@ -98,5 +98,5 @@ export default createStore ({
       resetAllLikesAct: act => {
         act.commit("resetAllLikes")
       }
-    }
+    */}
 })

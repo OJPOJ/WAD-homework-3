@@ -5,7 +5,10 @@
       <div class="links">
       <nav>
   <router-link to="/">Home</router-link> |
+
   <router-link to="/">Contacts</router-link>
+
+
 </nav>
 
 </div>
