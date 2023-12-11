@@ -3,7 +3,9 @@
   <div class="home">
     <div class="pagebody">
       <div class="block"></div>
-
+      <div class="logout">
+        <button @click="Logout">Logout</button>
+      </div>
       <div class="postList">
         <post-compo
           v-for="post in posts"

@@ -1,15 +1,17 @@
 <template>
   <div>
-    <form @submit.prevent="validateRegistration">
+    <form @submit.prevent="(this.email.length === 0 || this.password.lenght === 0)">
       <h2>Login</h2>
-      <label for="email">Email</label>
+      <p class="error">{{ error }}</p> 
+
+      <div class="formBod">
       <input type="email" required v-model="email" placeholder="Email" />
-      <label for="password">Password</label>
       <input type="password" required v-model="password" placeholder="Password" />
-      <div v-if="validatePassword" class="error">{{ validatePassword }}</div>
+      </div> 
+
       <div class="submit">
-        <button @click="LogIn">Login</button>
         <button @click='this.$router.push("/signup")'>Signup</button>
+        <button @click="LogIn()">Login</button>
       </div>
       
     </form>
@@ -25,13 +27,14 @@ export default {
       email: "",
       password: "",
       validatePassword: "",
+      error:"",
     };
   },
   methods: {
     LogIn() {
       var data = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
       // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
       fetch("http://localhost:3000/auth/login", {
@@ -44,23 +47,19 @@ export default {
       })
       .then((response) => response.json())
       .then((data) => {
-      console.log(data);
-      //this.$router.push("/");
-      location.assign("/");
+      if(!data.error){
+        this.$router.push("/");
+      //location.assign("/");
+      }else{
+        this.error = data.error
+      }
       })
       .catch((e) => {
         console.log(e);
         console.log("error");
       });
-    },
-    validateRegistration() {
-      console.log("signup is submitted");
-      this.validatePassword = "";
-      console.log("Password is valid");
-      this.$router.push("/");
-      
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -73,29 +72,25 @@ form {
   padding: 40px;
   border-radius: 10px;
 }
+h2{
+  text-align: center;
+}
 input {
-  margin-top: 5px;
+  margin-top: 1em;
   border: none;
   margin-bottom: 5px;
   display:inline-block;
   vertical-align:middle;
-  margin-left:20px;
   padding: 10px 6px;
   border-radius: 10px;
 }
-label {
-  display: inline-block;
-  float: left;
-  padding-top: 10px;
-  text-align: right;
-  width: 80px;
-  margin-right: 20px;
+p{
+  margin: 0px;
 }
-h2,
 .submit {
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
 }
-
 button {
   background: #6b84e5;
   border: 0;
@@ -104,10 +99,14 @@ button {
   color: #ffffff;
   border-radius: 20px;
   cursor: pointer;
+  text-align: center;
 }
-
+.formBod{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .error {
   color: #ff0000;
-  margin-top: 10px;
 }
 </style>
