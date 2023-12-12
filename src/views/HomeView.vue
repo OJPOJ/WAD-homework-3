@@ -6,27 +6,26 @@
       <div class="logout">
         <button @click="Logout">Logout</button>
       </div>
-      <div class="postList">
-        <post-compo
-          v-for="post in posts"
-          :key="post.id"
-          :id="post.id"
-          :body="post.body"
-        ></post-compo>
+      <div class="post" v-for="post in posts" :key="post.id">
+        <a class="postbody" :href="'/apost' + post.id">
+          <span class="body"><b>Body:</b> {{ post.body }}</span>
+        </a>
       </div>
-
       <div class="block"></div>
     </div>
   </div>
+  <router-link to="/addpost">
+    <button>Add Post</button>
+  </router-link>
+  <button @click="del()">Delete all posts</button>
 </template>
 <script>
-import postCompo from "@/components/postCompo.vue";
+
 import auth from "../auth";
 
 export default {
   name: "homeView",
   components: {
-    postCompo,
   },
   data: function () {
     return {
@@ -52,14 +51,43 @@ export default {
           console.log("error logout");
         });
     },
-    mounted() {
-      fetch("http://localhost:3000/posts")
-        .then((response) => response.json())
-        .then((data) => (this.posts = data.posts))
-        .catch((err) => console.log(err.message));
+    fetchPosts() {
+      fetch("http://localhost:3000/auth/posts")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);  // Log the response data
+            this.posts = data;
+          })
+          .catch((err) => console.error("Error fetching posts:", err));
     },
+    del() {
+      // using Fetch - post method - send an HTTP post request to the specified URI with the defined body
+      fetch("http://localhost:3000/auth/delete-posts", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            this.posts = [];
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    }
+
+  },
+  mounted() {
+    this.fetchPosts();
+    console.log("mounted")
   },
   computed: {
   },
 };
 </script>
+
