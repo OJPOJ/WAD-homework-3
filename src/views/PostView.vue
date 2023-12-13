@@ -5,9 +5,11 @@
       <div class="block"></div>
 
       <div class="postList">
-        <p>{{post.id}}</p>
+        <label>Date: </label>
         <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
-        <span class="body"><b>Body:</b> {{ post.body }}</span>
+        <label>Body: </label>
+        <input type="text" id="bodytf" name="bodytf" value="{{post.body}}">
+        <button @click="deletePost()">Delete</button>
       </div>
       <div class="block"></div>
     </div>
@@ -53,11 +55,20 @@ export default {
           console.log("error logout");
         });
     },
-    updatePost(){
-
-    },
     deletePost(){
-      
+      fetch(`http://localhost:3000/auth/post/${this.$route.params.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          this.posts = [];
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+        this.$router.push({ name: 'Home' });
     }
   },
   mounted() {
