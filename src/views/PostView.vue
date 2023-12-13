@@ -7,16 +7,15 @@
         <div class="postbody">
         
         <span class="date">{{ formatDate(post.date) }}</span>
-        <span class="body"> {{ post.body }}</span>
+        <input name="body" type="text" id="body" required v-model="post.body" />
 
         <div class="button">
           <button @click="deletePost()">Delete</button>
-          <button @click="deletePost()">Update</button>
+          <button @click="updatePost()">Update</button>
         </div>
 
         
         </div>
-
       </div>
     </div>
   </div>
@@ -60,6 +59,23 @@ export default {
           console.log(e);
           console.log("error logout");
         });
+    },
+    updatePost() {
+      fetch(`http://localhost:3000/auth/post/${this.post.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.post),
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            this.$router.push("/");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
     },
     deletePost(){
       fetch(`http://localhost:3000/auth/post/${this.$route.params.id}`, {
