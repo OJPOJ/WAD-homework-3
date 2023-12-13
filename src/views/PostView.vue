@@ -1,15 +1,16 @@
 
 <template>
   <div class="home">
-    <div class="pagebody">
-      <div class="block"></div>
+    <div class="addpagebody">
+      <div class="post">
+        <p>Your Post</p>
+        <div class="postbody">
+        
+        <span class="date">{{ formatDate(post.date) }}</span>
+        <span class="body"> {{ post.body }}</span>
 
-      <div class="postList">
-        <p>{{post.id}}</p>
-        <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
-        <span class="body"><b>Body:</b> {{ post.body }}</span>
+        </div>
       </div>
-      <div class="block"></div>
     </div>
   </div>
 </template>
