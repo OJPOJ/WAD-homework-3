@@ -5,17 +5,20 @@
         <button @click="Logout">Logout</button>
       </div>
     <div class="pagebody">
+      
       <div class="block"></div>
 
       <div class="postlist">
         <div class="post" v-for="post in posts" :key="post.id">
-        <a class="postbody" :href="'/apost/' + post.id">
-          <span class="body"><b></b> {{ post.body }}</span>
-        </a>
-        </div>
+          <a class="postbody" :href="'/apost' + post.id">
+            <span class="date"><b>Date:</b> {{formatDate(post.date)}}</span>
+            <span class="body"> {{ post.body }}</span>
+          </a>
+          </div>
       </div>
-      
+
       <div class="block"></div>
+
     </div>
   </div>
   <router-link to="/addpost">
@@ -38,6 +41,11 @@ export default {
     };
   },
   methods: {
+    formatDate(dateString) {
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
+      return formattedDate;
+    },
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
         credentials: "include", //  Don't forget to specify this if you need cookies
