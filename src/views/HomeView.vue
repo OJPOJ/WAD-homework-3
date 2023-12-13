@@ -8,7 +8,7 @@
       </div>
       <div class="post" v-for="post in posts" :key="post.id">
         <a class="postbody" :href="'/apost' + post.id">
-          <span class="body"><b>Body:</b> {{ post.body }}</span>
+          <span class="body"><b></b> {{ post.body }}</span>
         </a>
       </div>
       <div class="block"></div>
