@@ -7,7 +7,7 @@
         <button @click="Logout">Logout</button>
       </div>
       <div class="post" v-for="post in posts" :key="post.id">
-        <a class="postbody" :href="'/apost' + post.id">
+        <a class="postbody" :href="'/apost/' + post.id">
           <span class="body"><b>Body:</b> {{ post.body }}</span>
         </a>
       </div>

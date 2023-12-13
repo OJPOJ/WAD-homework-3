@@ -5,14 +5,7 @@
       <div class="block"></div>
 
       <div class="postList">
-        <post-compo
-          v-for="post in postList"
-          :key="post.postId"
-          :postId="post.postId"
-          :date="post.date"
-          :uri="post.pictureURI"
-          :text="post.text"
-        ></post-compo>
+        
       </div>
       <div class="block"></div>
     </div>
