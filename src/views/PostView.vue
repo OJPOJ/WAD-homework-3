@@ -1,18 +1,18 @@
 
 <template>
   <div class="home">
-    <div class="addpagebody">
-      <div class="post">
-        <p>Your Post</p>
-        <div class="postbody">
-        
-        <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
-        <input type="text" id="bodytf" name="bodytf" value="{{post.body}}">
-        <button @click="deletePost()">Delete</button>
-        
-        </div>
+    <div class="pagebody">
+      <div class="block"></div>
 
+      <div class="postList">
+        <label>Date: </label>
+        <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
+        <label>Body: </label>
+        <input name="body" type="text" id="body" required v-model="post.body" />
+        <button @click="deletePost()">Delete</button>
+        <button @click="updatePost()">Update</button>
       </div>
+      <div class="block"></div>
     </div>
   </div>
 </template>
@@ -55,6 +55,23 @@ export default {
           console.log(e);
           console.log("error logout");
         });
+    },
+    updatePost() {
+      fetch(`http://localhost:3000/auth/post/${this.post.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.post),
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            this.$router.push("/");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
     },
     deletePost(){
       fetch(`http://localhost:3000/auth/post/${this.$route.params.id}`, {
