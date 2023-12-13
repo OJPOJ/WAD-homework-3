@@ -6,8 +6,9 @@
       <nav>
         <button @click = getData()>GET ALL</button> <!---DEBUG BUTTONS FOR DATABASE-->
         <button @click = del()>DEL ALL</button>
-  <router-link to="/">Home</router-link> |
-  <router-link to="/contacts">Contacts</router-link>
+  <a href="/">Home |</a>
+  <router-link to="/contacts"> Contacts</router-link>
+
 
 
 </nav>

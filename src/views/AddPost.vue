@@ -10,10 +10,12 @@
 </template>
 
 <script>
+import auth from "@/auth";
 export default {
   name: "AddPost",
-  data() {
+  data: function() {
     return {
+      authResult: auth.authenticated(),
       post: {
         body: "",
       },
@@ -23,6 +25,7 @@ export default {
     addPost() {
       var data = {
         body: this.post.body,
+        date: new Date().toISOString()
       };
       fetch("http://localhost:3000/auth/posts", {
         method: "POST",
@@ -67,7 +70,7 @@ label {
 input {
   display: block;
   padding: 10px 6px;
-  width: 100%;
+  width: 70%;
   box-sizing: border-box;
   border: none;
   border-bottom: 1px solid white;
