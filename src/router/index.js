@@ -33,7 +33,15 @@ const routes = [{
 }, {
     path: "/addpost",
     name: "AddPost",
-    component: AddPost
+    component: AddPost,
+    beforeEnter: async(to, from, next) => {
+        let authResult = await auth.authenticated();
+        if (!authResult) {
+            next('/login')
+        } else {
+            next();
+        }
+    }
 }]
 
 const router = createRouter({
