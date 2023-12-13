@@ -7,9 +7,9 @@
         <button @click="Logout">Logout</button>
       </div>
       <div class="post" v-for="post in posts" :key="post.id">
-        <a class="postbody" :href="'/apost/' + post.id">
+        <router-link class="postbody" :to="{ name: 'Apost', params: { id: post.id }}">
           <span class="body"><b>Body:</b> {{ post.body }}</span>
-        </a>
+          </router-link>
       </div>
       <div class="block"></div>
     </div>

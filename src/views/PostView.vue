@@ -5,14 +5,16 @@
       <div class="block"></div>
 
       <div class="postList">
-        
+        <p>{{post.id}}</p>
+          <span class="body"><b>Body:</b> {{ post.body }}</span>
+
       </div>
       <div class="block"></div>
     </div>
   </div>
 </template>
 <script>
-import postCompo from "@/components/postCompo.vue";
+
 import auth from "../auth";
 
 export default {
@@ -21,7 +23,7 @@ export default {
   },
   data: function () {
     return {
-      posts: [],
+      post: [],
       authResult: auth.authenticated(),
     };
   },
@@ -44,9 +46,9 @@ export default {
         });
     },
     mounted() {
-      fetch("https://jsonplaceholder.typicode.com/posts")
+      fetch("http://localhost:3000/auth/post/{{ $route.params.id }}")
         .then((response) => response.json())
-        .then((data) => (this.posts = data))
+        .then((data) => (this.post = data))
         .catch((err) => console.log(err.message));
     },
   },
