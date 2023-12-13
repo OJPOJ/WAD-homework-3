@@ -50,7 +50,7 @@ button {
 
 
 a:hover{
-	background-color: darkblue;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .headerClass{
@@ -125,14 +125,9 @@ body{
 	background-color:#96bfe6;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.posthead img{
-	margin-top: 1vw;
-	width: 5vw;
-	height: 5vw;
-	border-radius: 50%;
-	border-style: solid;
-	border-width: thick;
-	border-color: #b5d1cc;
+.postlist{
+	display: flex;
+	flex-direction: column;
 }
 .posthead p {
 	background-color: #b5d1cc;

@@ -1,16 +1,20 @@
 
 <template>
   <div class="home">
-    <div class="pagebody">
-      <div class="block"></div>
-      <div class="logout">
+    <div class="logout">
         <button @click="Logout">Logout</button>
       </div>
-      <div class="post" v-for="post in posts" :key="post.id">
-        <a class="postbody" :href="'/apost' + post.id">
+    <div class="pagebody">
+      <div class="block"></div>
+
+      <div class="postlist">
+        <div class="post" v-for="post in posts" :key="post.id">
+        <a class="postbody" :href="'/apost/' + post.id">
           <span class="body"><b></b> {{ post.body }}</span>
         </a>
+        </div>
       </div>
+      
       <div class="block"></div>
     </div>
   </div>
