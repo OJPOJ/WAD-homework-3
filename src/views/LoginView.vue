@@ -10,8 +10,9 @@
       </div> 
 
       <div class="submit">
-        <button @click='this.$router.push("/signup")'>Signup</button>
         <button @click="LogIn()">Login</button>
+        <button @click='this.$router.push("/signup")'>Signup</button>
+        
       </div>
       
     </form>

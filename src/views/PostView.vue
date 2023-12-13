@@ -6,9 +6,14 @@
         <p>Your Post</p>
         <div class="postbody">
         
-        <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
-        <input type="text" id="bodytf" name="bodytf" value="{{post.body}}">
-        <button @click="deletePost()">Delete</button>
+        <span class="date">{{ formatDate(post.date) }}</span>
+        <span class="body"> {{ post.body }}</span>
+
+        <div class="button">
+          <button @click="deletePost()">Delete</button>
+          <button @click="deletePost()">Update</button>
+        </div>
+
         
         </div>
 
