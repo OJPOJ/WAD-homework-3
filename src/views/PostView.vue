@@ -6,8 +6,8 @@
 
       <div class="postList">
         <p>{{post.id}}</p>
-          <span class="body"><b>Body:</b> {{ post.body }}</span>
-
+        <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
+        <span class="body"><b>Body:</b> {{ post.body }}</span>
       </div>
       <div class="block"></div>
     </div>
@@ -28,6 +28,14 @@ export default {
     };
   },
   methods: {
+    formatDate(dateString) {
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      const formattedDate = new Date(dateString).toLocaleDateString(
+        undefined,
+        options
+      );
+      return formattedDate;
+    },
     Logout() {
       fetch("http://localhost:3000/auth/logout", {
         credentials: "include", //  Don't forget to specify this if you need cookies
@@ -45,13 +53,20 @@ export default {
           console.log("error logout");
         });
     },
-    mounted() {
-      fetch("http://localhost:3000/auth/post/{{ $route.params.id }}")
+    updatePost(){
+
+    },
+    deletePost(){
+      
+    }
+  },
+  mounted() {
+      const id = this.$route.params.id;
+      fetch(`http://localhost:3000/auth/post/${id}`)
         .then((response) => response.json())
         .then((data) => (this.post = data))
         .catch((err) => console.log(err.message));
     },
-  },
   computed: {
     postList() {
       return this.$store.state.postList;
