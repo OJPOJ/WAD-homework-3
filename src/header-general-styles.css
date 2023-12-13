@@ -239,7 +239,16 @@ body {
 .dropbtn:focus {
   background-color: whitesmoke;
 }
-
+button {
+  background: rgb(8, 110, 110);
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  align-items: center;
+  text-align: center;
+}
 .dropdown {
   position: relative;
   display: inline-block;

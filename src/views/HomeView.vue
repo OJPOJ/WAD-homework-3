@@ -1,5 +1,8 @@
 
 <template>
+  <div class="logout">
+      <button @click="Logout">Logout</button>
+    </div>
   <div class="home">
     <div class="pagebody">
       <div class="block"></div>
@@ -38,6 +41,23 @@ export default {
     };
   },
   methods: {
+    Logout() {
+      fetch("http://localhost:3000/auth/logout", {
+        credentials: "include", //  Don't forget to specify this if you need cookies
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          console.log("jwt removed");
+          //console.log('jwt removed:' + auth.authenticated());
+          this.$router.push("/login");
+          //location.assign("/");
+        })
+        .catch((e) => {
+          console.log(e);
+          console.log("error logout");
+        });
+    },
     formatDate(dateString) {
       const options = { year: "numeric", month: "long", day: "numeric" };
       const formattedDate = new Date(dateString).toLocaleDateString(

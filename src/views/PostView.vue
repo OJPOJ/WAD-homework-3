@@ -1,5 +1,8 @@
 
 <template>
+  <div class="logout">
+      <button @click="Logout">Logout</button>
+    </div>
   <div class="home">
     <div class="addpagebody">
       <div class="post">

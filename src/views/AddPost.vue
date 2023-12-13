@@ -1,4 +1,7 @@
 <template>
+  <div class="logout">
+      <button @click="Logout">Logout</button>
+    </div>
   <div class="addpost-form">
     <h3>Add Post</h3>
     <label for="body">Body: </label>
@@ -22,6 +25,23 @@ export default {
     };
   },
   methods: {
+    Logout() {
+      fetch("http://localhost:3000/auth/logout", {
+        credentials: "include", //  Don't forget to specify this if you need cookies
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          console.log("jwt removed");
+          //console.log('jwt removed:' + auth.authenticated());
+          this.$router.push("/login");
+          //location.assign("/");
+        })
+        .catch((e) => {
+          console.log(e);
+          console.log("error logout");
+        });
+    },
     addPost() {
       var data = {
         body: this.post.body,
