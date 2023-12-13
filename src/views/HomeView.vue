@@ -1,9 +1,6 @@
 
 <template>
   <div class="home">
-    <div class="logout">
-      <button @click="Logout">Logout</button>
-    </div>
     <div class="pagebody">
       <div class="block"></div>
       <div class="postlist">
@@ -12,8 +9,10 @@
             class="postbody"
             :to="{ name: 'Apost', params: { id: post.id } }"
           >
-            <span class="date"><b>Date:</b> {{ formatDate(post.date) }}</span>
-            <span class="body"><b>Body:</b> {{ post.body }}</span>
+
+            <span class="date"> {{ formatDate(post.date) }}</span>
+            <span class="body"> {{ post.body }}</span>
+
           </router-link>
         </div>
       </div>
@@ -46,23 +45,6 @@ export default {
         options
       );
       return formattedDate;
-    },
-    Logout() {
-      fetch("http://localhost:3000/auth/logout", {
-        credentials: "include", //  Don't forget to specify this if you need cookies
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          console.log("jwt removed");
-          //console.log('jwt removed:' + auth.authenticated());
-          this.$router.push("/login");
-          //location.assign("/");
-        })
-        .catch((e) => {
-          console.log(e);
-          console.log("error logout");
-        });
     },
     fetchPosts() {
       fetch("http://localhost:3000/auth/posts")
